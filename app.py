@@ -17,7 +17,8 @@ REMOTE_ADDR, REMOTE_PORT = ("255.255.255.255", 1500)
 tunnel = {"ssh_address_or_host": (SSH_ADDR, SSH_PORT),
           "ssh_username": SSH_USER,
           "ssh_password": SSH_PASS,
-          "remote_bind_address": (REMOTE_ADDR, REMOTE_PORT)}
+          "remote_bind_address": (REMOTE_ADDR, REMOTE_PORT)
+          }
 
 sql_con_str = 'oracle://{user}:{pw}@localhost:{port}/oracle'
 
@@ -41,7 +42,8 @@ class Queries(Resource):
             )
             conn = engine.connect()
             query = conn.execute(query)
-            result = {"data": [[str(cell) for cell in row] for row in query]}
+            result = {
+                "data": [[str(cell) for cell in row] for row in query]}
             conn.close()
             return result
 
